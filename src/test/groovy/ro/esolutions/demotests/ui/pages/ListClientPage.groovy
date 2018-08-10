@@ -13,7 +13,7 @@ class ListClientPage {
         clientListPage
     }
 
-    def assertIsOnPage() {
+    def static assertIsOnPage() {
         $(".qa-client-view-page").should(Condition.exist)
     }
 }
