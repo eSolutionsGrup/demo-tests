@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+    <body>
+        <h1 th:text="${client.name} + ' Add/edit reservation '"></h1>
+
+        <div class="qa-reservation-edit-page">
+
+            <form th:action="@{save}" th:object="${reservation}" method="post" role="form">
+
+                <input type="hidden" th:field="*{id}"/>
+                <input type="hidden" th:field="*{client.id}"/>
+                <input type="hidden" th:field="*{reservationDate}"/>
+                <input type="hidden" th:field="*{status}"/>
+
+                <div>
+                    <label for="roomType">Room type*: </label>
+
+                    <div>
+                        <select th:field="*{roomType}">
+                            <option value="SINGLE">Single</option>
+                            <option value="DOUBLE">Double</option>
+                            <option value="TWIN">Twin</option>
+                        </select>
+                    </div>
+                </div>
+                <br></br>
+                <div>
+                    <label for="fromDate">From Date*: </label>
+                    <div>
+                        <input type="text" th:field="*{fromDate}"/>
+                        <span class="qa-fromDate-error" th:if="${#fields.hasErrors('fromDate')}" th:errors="*{fromDate}"></span>
+                    </div>
+                </div>
+                <br></br>
+
+                <div>
+                    <label for="toDate">To Date*: </label>
+                    <div>
+                        <input type="text" th:field="*{toDate}"/>
+                        <span class="qa-toDate-error" th:if="${#fields.hasErrors('toDate')}" th:errors="*{toDate}"></span>
+                    </div>
+                </div>
+
+                <div>
+                    <button type="submit">Save</button>
+                    <a th:href="@{/reservation/cancelEdit(clientId=${client.id})}">Cancel</a>
+                </div>
+            </form>
+
+        </div>
+    </body>
+</html>

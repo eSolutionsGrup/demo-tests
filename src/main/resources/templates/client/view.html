@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+    <head>
+        <link th:href="@{/css/main.css}" rel="stylesheet"/>
+    </head>
+    <body>
+        <h1>Clients</h1>
+
+        <a th:href="@{/client/add}">Create</a>
+        <br></br>
+
+        <div class="qa-client-view-page">
+            <table class="qa-table-client-list" style="width: 100%">
+                <tr>
+                    <th>Id</th>
+                    <th>First name</th>
+                    <th>Last name</th>
+                    <th>Address</th>
+                    <th>E-mail</th>
+                    <th>Phone</th>
+                    <th>Active</th>
+                    <th></th>
+                </tr>
+                <tr th:each="client : ${clients}">
+                    <td th:text="${client.id}"></td>
+                    <td th:text="${client.firstName}"></td>
+                    <td th:text="${client.lastName}"></td>
+                    <td th:text="${client.address}"></td>
+                    <td th:text="${client.emailAddress}"></td>
+                    <td th:text="${client.phoneNumber}"></td>
+                    <td th:text="${client.active ? 'ACTIVE' : 'INACTIVE'}"></td>
+                    <td>
+                        <a th:href="@{/client/edit(id=${client.id})}">Edit</a>
+                        <a th:href="@{/client/delete(id=${client.id})}">Delete</a>
+                        <a th:href="@{/reservation/view(clientId=${client.id})}">Reservations</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </body>
+</html>

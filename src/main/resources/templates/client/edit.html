@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+    <body>
+        <h1>Add/edit client</h1>
+
+        <div class="qa-client-edit-page">
+
+        <form th:action="@{save}" th:object="${client}" method="post" role="form">
+
+            <input type="hidden" th:field="*{id}"/>
+            <input type="hidden" th:field="*{active}"/>
+
+            <div>
+                <label for="firstName">First name*: </label>
+
+                <div>
+                    <input type="text" th:field="*{firstName}"/>
+                            <span class="qa-firstName-error" th:if="${#fields.hasErrors('firstName')}"
+                                  th:errors="*{firstName}"></span>
+                </div>
+            </div>
+            <br></br>
+            <div>
+                <label for="lastName">Last name*: </label>
+
+                <div>
+                    <input type="text" th:field="*{lastName}"/>
+                            <span class="qa-lastName-error" th:if="${#fields.hasErrors('lastName')}"
+                                  th:errors="*{lastName}"></span>
+                </div>
+            </div>
+            <br></br>
+            <div>
+                <label for="address">Address*: </label>
+
+                <div>
+                    <input type="text" th:field="*{address}"/>
+                            <span class="qa-address-error" th:if="${#fields.hasErrors('address')}"
+                                  th:errors="*{address}"></span>
+                </div>
+            </div>
+            <br></br>
+            <div>
+                <label for="emailAddress">E-mail*: </label>
+
+                <div>
+                    <input type="email" th:field="*{emailAddress}"/>
+                            <span class="qa-emailAddress-error" th:if="${#fields.hasErrors('emailAddress')}"
+                                  th:errors="*{emailAddress}"></span>
+                </div>
+            </div>
+            <br></br>
+            <div>
+                <label for="phoneNumber">Phone*: </label>
+
+                <div>
+                    <input type="text" th:field="*{phoneNumber}"/>
+                            <span class="qa-phoneNumber-error" th:if="${#fields.hasErrors('phoneNumber')}"
+                                  th:errors="*{phoneNumber}"></span>
+                </div>
+            </div>
+
+            <br></br>
+            <div>
+                <button type="submit">Save</button>
+                <a th:href="@{cancel}">Cancel</a>
+            </div>
+        </form>
+
+        </div>
+    </body>
+</html>
