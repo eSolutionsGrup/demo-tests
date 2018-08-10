@@ -22,11 +22,11 @@ class GoogleSearchSpecUI extends Specification {
 
         then:"eSolutions web page is found in results"
         $("#ires .g").shouldBe(Condition.visible).shouldHave(
-                text("eSolutions: Dezvoltare Java, training, cursuri, programare mobile"),
+                text("eSolutions - solutii software personalizate"),
                 text("esolutions.ro"))
     }
 
-    def "Test Google 2"() {
+    def "Test Google selenide"() {
         when:
         open("https://google.com/ncr")
 
